@@ -1,0 +1,8 @@
+main > .container {
+    padding: 60px 15px 0;
+    
+}
+
+.btn-index{
+    z-index: 2000;
+}
