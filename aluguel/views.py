@@ -6,7 +6,8 @@ from .forms import AluguelForm, CarroForm, ClienteForm
 
 def index(request):
     carros = Carro.objects.all()[:5]
-    return render(request, 'index.html', {"carros":carros})
+    clientes = Cliente.objects.all()[:5]
+    return render(request, 'index.html', { 'clientes':clientes, 'carros':carros})
 
 def lista_carros(request):
     carros = Carro.objects.all()
@@ -77,4 +78,32 @@ def detalhar_cliente(request, pk):
     cliente = Cliente.objects.get(pk=pk)
     context = {"cliente": cliente}
     return render(request, "cliente/detalhar.html", context)
+
+def listar_cliente(request):
+    clientes = Cliente.objects.all()
+    context = {"clientes": clientes}
+    return render(request, "cliente/listar.html", context)
+
+def atualizar_cliente(request, pk):
+    cliente = Cliente.objects.get(pk=pk)
+    form = ClienteForm(instance=cliente)
+    
+    if request.method == "POST":
+        form = ClienteForm(request.POST, request.FILES, instance=cliente)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+        else:
+            return render(request, "cliente/atualizar.html", {'form': form})
+    else:
+        return render(request, "cliente/atualizar.html", {'form': form})
+    
+def deletar_cliente(request, pk):
+    cliente = Cliente.objects.get(pk=pk)
+
+    if cliente:
+        cliente.delete()
+        return redirect("/")
+    else:
+        return render(request, "cliente/listar.html", {'msg': "Cliente não encontrado"})
        

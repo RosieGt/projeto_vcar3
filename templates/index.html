@@ -90,6 +90,15 @@
           <a href="{% url 'realizar_aluguel_carro' carro.pk %}" class="btn btn-primary mt-4">Alugue!</a>
           {% endfor %}
         </div>
+        <div class="row">
+          <div class="col">
+            <h2>Cliente</h2>
+            <ul class="list-group list-group-flush">
+              {% for cliente in clientes %}
+              <li class="list-group-item"><a href="{% url 'detalhar_cliente' cliente.pk %}">{{ cliente.nome }}</a></li>
+              {% endfor %}
+            </ul>
+          
   
         {% endblock content %}
       </div>

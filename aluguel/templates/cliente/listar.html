@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+    {% block title %}Vcar - Cliente{% endblock title %}
+    {% block content %}
+    <h1>Locadora Vcar</h1>
+    <h2>Cliente:</h2>
+    <div class="d-flex justify-content-end">
+    <a class="btn btn-primary" href="{% url 'cadastrar_cliente'%}" role="button">Cadastrar Cliente</a>
+    </div>
+    <ul class="list-group list-group-flush">
+        {% for cliente in clientes %}
+        <li class="list-group-item" ><a href="{% url 'detalhar_cliente' cliente.pk %}">{{ cliente.nome }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endblock content %}
