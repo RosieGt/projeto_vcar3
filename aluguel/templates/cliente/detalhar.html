@@ -1,11 +1,11 @@
 {% extends 'index.html' %}
-{% block title %}Vcar {{ cliente.nome }} {% endblock title %}
+{% block title %}Vcar Clientes{{ cliente.nome }} {% endblock title %}
 {% block content %}
-<h1>Alugueis de Carros</h1>
+<h1>Detalhar Clientes</h1>
 <h2>clientes:</h2>
 <div class="d-flex justify-content-end">
 <div class="btn-group">
-    <a href="{% url 'atualizar_cliente' cliente.pk %}" class="btn btn-primary">Atualizar</a>
+    <a href="{% url 'atualizar_cliente' cliente.pk %}" class="btn btn-primary md-n4">Atualizar</a>
     <a href="{% url 'deletar_cliente' cliente.pk %}" class="btn btn-danger">Deletar</a>
 </div>
 </div>

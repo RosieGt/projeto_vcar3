@@ -53,13 +53,13 @@
       {% bootstrap_messages %}
       <div class="container my-4">
         {% block content %}
-        <div class="p-4 p-md-5 mb-4 rounded bg-dark text-white">
+        <div class="p-4 p-md-5 mb-4 rounded bg-red text-black">
           <div class="row">
             <div class="col-md-6 align-middle">
               <h1 class="display-4 fst-italic">Locadora Vcar</h1>
               <p class="lead my-3">Alugue agora!
                 Locações de veiculos p/ empresas, pessoas físicas e motoristas de aplicativo</p>
-              <p class="lead mb-0"><a href="{% url 'realizar_aluguel' %}" class="text-white fw-bold">Alugue um Carro!</a></p>
+              <p class="lead mb-0"><a href="{% url 'realizar_aluguel' %}" class="text-black fw-bold">Alugue um Carro!</a></p>
             </div>
             <div class="col-md-6">
               <img src="{% static 'img/carros-1024x356.png' %}" class="mx-auto d-block" width="800" >
@@ -68,6 +68,7 @@
         </div>
   
         <div class="row mb-2">
+          <h2>Carros</h2>
           {% for carro in carros %}
           <div class="col-md-6">
             <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -92,7 +93,7 @@
         </div>
         <div class="row">
           <div class="col">
-            <h2>Cliente</h2>
+            <h2>Clientes</h2>
             <ul class="list-group list-group-flush">
               {% for cliente in clientes %}
               <li class="list-group-item"><a href="{% url 'detalhar_cliente' cliente.pk %}">{{ cliente.nome }}</a></li>
