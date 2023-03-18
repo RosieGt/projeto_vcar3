@@ -20,6 +20,7 @@ class Carro(models.Model):
     codigo = models.CharField("Codigo", max_length=100)
     marca = models.CharField("Marca", max_length=100)
     modelo = models.CharField("Modelo", max_length=100)
+    img = models.ImageField("Imagem", upload_to='imagens', null=True, blank=True)
     comprar = models.DateField("Data de compra")
 
     def __str__(self):

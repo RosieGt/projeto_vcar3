@@ -29,6 +29,29 @@ def cadastrar_carro(request):
     else:
         form = CarroForm()
         return render(request, "carro/cadastrar.html", {'form': form})
+    
+def atualizar_carro(request, pk):
+    carro = Carro.objects.get(pk=pk)
+    form = CarroForm(instance=carro)
+    
+    if request.method == "POST":
+        form = CarroForm(request.POST, request.FILES, instance= carro)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+        else:
+            return render(request, "carro/atualizar.html", {'form': form})
+    else:
+        return render(request, "carro/atualizar.html", {'form': form})
+
+def deletar_carro(request, pk):
+    carro = Carro.objects.get(pk=pk)
+
+    if carro:
+        carro.delete()
+        return redirect("/")
+    else:
+        return render(request, "carro/detalhar.html", {'msg': "carro não encontrado"})    
 
 def realizar_aluguel(request):
     if request.method == "POST":

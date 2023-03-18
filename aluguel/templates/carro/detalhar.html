@@ -4,6 +4,10 @@
 <h1>Detalhes do Carro</h1>
 <h2>Carro:</h2>
 <div class="d-flex justify-content-end">
+    <div class="btn-group">
+        <a href="{% url 'atualizar_carro' carro.pk %}" class="btn btn-primary">Atualizar</a>
+        <a href="{% url 'deletar_carro' carro.pk %}" class="btn btn-danger">Deletar</a>
+    </div>
 </div>
 <div class="card mt-4">
     <div class="card-header">
@@ -14,7 +18,14 @@
             <li class="list-group-item">Marca: {{ carro.marca }}</li>
             <li class="list-group-item">Modelo: {{ carro.modelo }}</li>
             <li class="list-group-item">Data de compra: {{ carro.comprar }}</li>
-          </ul>
+            <li class="list-group-item">
+                {% if noticia.img  %}
+                <img src="{{ carro.img.url }}" >
+                {% else %}
+                Sem imagem.
+                {% endif %}
+            </li>  
+        </ul>
     </div>
 </div>
 {% endblock content %}

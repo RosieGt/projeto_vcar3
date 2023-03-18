@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% load bootstrap5 %}
+    {% block title %}Vcar - Atualizar Carros{% endblock title %}
+    {% block content %}
+    <h1>Locadora Vcar</h1>
+    <h2>Carro: {{ form.instance.carro }}</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">
+      Atualizar
+    </button>
+    {% endbuttons %}
+    </form>
+    {% endblock content %}
